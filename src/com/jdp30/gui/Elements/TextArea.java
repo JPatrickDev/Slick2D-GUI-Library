@@ -5,6 +5,7 @@ import com.jdp30.gui.GUIElement;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 
 import java.util.Random;
 
@@ -16,6 +17,12 @@ public class TextArea extends GUIElement {
     private String text;
 
     private Color backgroundColor, textColor;
+    private Image backgroundImage;
+
+    public TextArea(String text, int x, int y, Image backgroundImage) {
+        this(text, x, y, backgroundImage.getWidth(), backgroundImage.getHeight());
+        this.backgroundImage = backgroundImage;
+    }
 
     public TextArea(String text, int x, int y, int width, int height) {
         this(text, x, y, width, height, null, Color.black);
@@ -39,6 +46,9 @@ public class TextArea extends GUIElement {
         if (backgroundColor != null) {
             graphics.setColor(backgroundColor);
             graphics.fillRect(0, 0, getWidth(), getHeight());
+        }
+        if (backgroundImage != null) {
+            graphics.drawImage(backgroundImage, 0, 0);
         }
         graphics.setColor(textColor);
         graphics.drawString(text, tX, tY);
@@ -68,14 +78,14 @@ public class TextArea extends GUIElement {
     public void mouseLeave(int cMX, int cMY) {
         super.mouseLeave(cMX, cMY);
 
-        this.backgroundColor = new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255));
-        this.textColor = new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255));
+        //    this.backgroundColor = new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255));
+        //    this.textColor = new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255));
     }
 
     @Override
     public void mouseEnter(int cMX, int cMY) {
         super.mouseEnter(cMX, cMY);
-        this.backgroundColor = new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255));
-        this.textColor = new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255));
+        //    this.backgroundColor = new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255));
+        //    this.textColor = new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255));
     }
 }
