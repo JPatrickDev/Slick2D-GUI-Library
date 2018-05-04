@@ -33,7 +33,7 @@ public class ExampleGame extends BasicGUIGame {
         GUIArea area = new GUIArea(0, 0, gameContainer.getWidth(), gameContainer.getHeight());
 
 
-        area.addElement(new PasswordInput(50,50,150,50));
+        area.addElement(new TextInput(50,50,NinePatchBuilder.getImage(new Image("res/button.png"),6,6,100,50)));
 
 
         addGUIArea(area);

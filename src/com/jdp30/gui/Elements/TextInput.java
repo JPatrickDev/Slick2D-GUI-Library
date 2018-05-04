@@ -5,6 +5,7 @@ import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 
 /**
  * Created by Jack on 04/05/2018.
@@ -12,17 +13,37 @@ import org.newdawn.slick.Graphics;
 public class TextInput extends GUIElement {
 
     private String data = "";
+    private Color bg = Color.green, text = Color.white;
+    private Image img;
 
     public TextInput(int x, int y, int width, int height) {
-        super(x, y, width, height);
+        this(x, y, width, height, null, Color.white);
     }
+
+    public TextInput(int x, int y, int width, int height, Color bg, Color text) {
+        super(x, y, width, height);
+        this.bg = bg;
+        this.text = text;
+    }
+
+    public TextInput(int x, int y, Image img) {
+        super(x, y, img.getWidth(), img.getHeight());
+        this.img = img;
+    }
+
 
     int i = 0;
     int j = 0;
 
     @Override
     public void render(Graphics graphics) {
-        graphics.setColor(Color.red);
+        if (bg != null) {
+            graphics.setColor(bg);
+            graphics.fillRect(0, 0, getWidth(), getHeight());
+        }
+        if (img != null)
+            graphics.drawImage(img, 0, 0);
+        graphics.setColor(text);
         if (i > 40) {
             graphics.drawString(getDisplayText() + ".", 0, 0);
             if (j >= 15) {
