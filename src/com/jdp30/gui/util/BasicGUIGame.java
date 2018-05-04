@@ -27,8 +27,9 @@ public abstract class BasicGUIGame extends BasicGame {
 
     @Override
     public void keyPressed(int key, char c) {
-        super.keyPressed(key, c);
-
+        for (GUIArea area : areas) {
+            area.keyPressed(c,key);
+        }
     }
 
     @Override

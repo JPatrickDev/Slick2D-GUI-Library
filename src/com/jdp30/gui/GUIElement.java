@@ -77,4 +77,10 @@ public abstract class GUIElement {
         }
     }
 
+    public void keyPressed(char c,int code) {
+        if (listener != null) {
+            listener.keyPressed(c,code);
+        }
+    }
+
 }

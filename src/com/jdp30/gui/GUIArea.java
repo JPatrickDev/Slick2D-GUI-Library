@@ -57,6 +57,9 @@ public class GUIArea {
         lMY = container.getInput().getMouseY();
         lMX = lMX - getX();
         lMY = lMY - getY();
+
+        for(GUIElement c : elements)
+            c.update(container);
     }
 
     public void mouseDown(int x, int y, int button) {
@@ -91,5 +94,11 @@ public class GUIArea {
 
     public int getHeight() {
         return height;
+    }
+
+    public void keyPressed(char c,int code) {
+        for(GUIElement element : elements){
+            element.keyPressed(c,code);
+        }
     }
 }

@@ -13,6 +13,8 @@ public interface GUIElementListener {
 
     void mouseLeave(int x, int y, GUIElement element);
 
-   // void mouseDown(int x, int y, int button, GUIElement element);
+    void keyPressed(char c, int code);
+
+    // void mouseDown(int x, int y, int button, GUIElement element);
 
 }
