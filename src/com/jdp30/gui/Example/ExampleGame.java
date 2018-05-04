@@ -1,5 +1,6 @@
 package com.jdp30.gui.Example;
 
+import com.jdp30.gui.Elements.PasswordInput;
 import com.jdp30.gui.Elements.TextArea;
 import com.jdp30.gui.Elements.TextButton;
 import com.jdp30.gui.Elements.TextInput;
@@ -32,7 +33,7 @@ public class ExampleGame extends BasicGUIGame {
         GUIArea area = new GUIArea(0, 0, gameContainer.getWidth(), gameContainer.getHeight());
 
 
-        area.addElement(new TextInput(50,50,150,50));
+        area.addElement(new PasswordInput(50,50,150,50));
 
 
         addGUIArea(area);

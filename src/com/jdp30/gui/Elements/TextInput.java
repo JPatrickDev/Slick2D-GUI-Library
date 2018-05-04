@@ -19,18 +19,19 @@ public class TextInput extends GUIElement {
 
     int i = 0;
     int j = 0;
+
     @Override
     public void render(Graphics graphics) {
         graphics.setColor(Color.red);
         if (i > 40) {
-            graphics.drawString(data + ".", 0, 0);
-            if(j >= 15){
+            graphics.drawString(getDisplayText() + ".", 0, 0);
+            if (j >= 15) {
                 i = 0;
                 j = 0;
             }
             j++;
         } else {
-            graphics.drawString(data, 0, 0);
+            graphics.drawString(getDisplayText(), 0, 0);
         }
         i++;
         graphics.setColor(Color.white);
@@ -38,12 +39,14 @@ public class TextInput extends GUIElement {
 
     @Override
     public void update(GameContainer container) {
-
+        System.out.println(getText());
     }
 
     @Override
     public void keyPressed(char c, int code) {
         super.keyPressed(c, code);
+        if (c == Character.MIN_VALUE)
+            return;
         if (code == Keyboard.KEY_RETURN) {
             data += "\n";
         } else if (code == Keyboard.KEY_BACK) {
@@ -52,5 +55,13 @@ public class TextInput extends GUIElement {
         } else {
             data += c;
         }
+    }
+
+    public String getDisplayText() {
+        return this.data;
+    }
+
+    public String getText() {
+        return this.data;
     }
 }
