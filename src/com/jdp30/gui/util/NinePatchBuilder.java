@@ -10,6 +10,18 @@ import org.newdawn.slick.SlickException;
  */
 public class NinePatchBuilder {
 
+    /**
+    * Get an image of the given width and height from the given 9patch
+    *
+    * @param patch The 9Patch Image
+    * @param patchW The width of each patch
+    * @paran patchH The height of each patch
+    * @param targetWidth The width of the new image
+    * @param targetHeight The height of the new image
+    * 
+    * @return An Image of the target width and height
+    *
+    */
     public static Image getImage(Image patch, int patchW, int patchH, int targetWidth, int targetHeight) {
         long start = System.currentTimeMillis();
         Image[][] patches = new Image[3][3];
