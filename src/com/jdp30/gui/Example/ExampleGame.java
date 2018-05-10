@@ -33,6 +33,7 @@ public class ExampleGame extends BasicGUIGame {
         GUIArea area = new GUIArea(0, 0, gameContainer.getWidth(), gameContainer.getHeight());
 
 
+        //Add a new TextInput area at (50,50), with the given NinePatch image as the background.
         area.addElement(new TextInput(50,50,NinePatchBuilder.getImage(new Image("res/button.png"),6,6,100,50)));
 
 
