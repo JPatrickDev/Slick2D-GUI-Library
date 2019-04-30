@@ -1,7 +1,9 @@
 package com.jdp30.gui;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
 
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ import java.util.ArrayList;
 public class GUIArea {
 
     private int x, y, width, height;
+
+    private Image background;
 
     private ArrayList<GUIElement> elements = new ArrayList<>();
 
@@ -28,6 +32,9 @@ public class GUIArea {
 
     public void render(Graphics g) {
         g.translate(x, y);
+        if (background != null)
+            g.drawImage(background, 0, 0);
+        g.setColor(Color.white);
         for (GUIElement element : elements) {
             g.translate(element.getX(), element.getY());
             element.render(g);
@@ -37,18 +44,19 @@ public class GUIArea {
     }
 
     int lMX = -1, lMY = -1;
+
     public void update(GameContainer container) {
-        if(lMX != -1){
+        if (lMX != -1) {
             int cMX = container.getInput().getMouseX();
             int cMY = container.getInput().getMouseY();
             cMX = cMX - getX();
             cMY = cMY - getY();
-            for(GUIElement c : elements){
-                if(c.contains(lMX,lMY) && ! c.contains(cMX,cMY)){
-                    c.mouseLeave(cMX,cMY);
+            for (GUIElement c : elements) {
+                if (c.contains(lMX, lMY) && !c.contains(cMX, cMY)) {
+                    c.mouseLeave(cMX, cMY);
                 }
-                if(!c.contains(lMX,lMY) && c.contains(cMX,cMY)){
-                    c.mouseEnter(cMX,cMY);
+                if (!c.contains(lMX, lMY) && c.contains(cMX, cMY)) {
+                    c.mouseEnter(cMX, cMY);
                 }
             }
         }
@@ -58,14 +66,14 @@ public class GUIArea {
         lMX = lMX - getX();
         lMY = lMY - getY();
 
-        for(GUIElement c : elements)
+        for (GUIElement c : elements)
             c.update(container);
     }
 
     public void mouseDown(int x, int y, int button) {
         for (GUIElement g : elements) {
             if (new Rectangle(g.getX(), g.getY(), g.getWidth(), g.getHeight()).contains(x, y))
-            g.mouseDown(x, y, button);
+                g.mouseDown(x, y, button);
         }
     }
 
@@ -96,9 +104,13 @@ public class GUIArea {
         return height;
     }
 
-    public void keyPressed(char c,int code) {
-        for(GUIElement element : elements){
-            element.keyPressed(c,code);
+    public void keyPressed(char c, int code) {
+        for (GUIElement element : elements) {
+            element.keyPressed(c, code);
         }
+    }
+
+    public void setBackground(Image image) {
+        this.background = image;
     }
 }
